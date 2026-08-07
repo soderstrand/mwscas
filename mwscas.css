@@ -1,0 +1,149 @@
+
+:root{
+ --purple:#5b3f99;
+ --gold:#f2c94c;
+}
+body{
+ margin:0;
+ background:#ececec;
+ font-family:Arial,Helvetica,sans-serif;
+ color:#222;
+}
+.wrapper{
+ max-width:1400px;
+ margin:30px auto;
+ background:#fff;
+ border-radius:10px;
+ overflow:hidden;
+ box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.logo-row{
+ display:grid;
+ grid-template-columns:1fr 1.5fr 1fr;
+ align-items:center;
+ padding:18px 30px;
+}
+.logo-row img{max-height:80px;justify-self:center;}
+.logo-row img.center{max-height:105px;}
+.title{
+ background:var(--purple);
+ color:white;
+ text-align:center;
+ padding:22px;
+}
+.navbar{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:8px;
+ background:var(--purple);
+ border-top:3px solid var(--gold);
+ border-bottom:3px solid var(--gold);
+ padding:10px;
+}
+.navbar a{
+ color:var(--gold);
+ text-decoration:none;
+ font-weight:bold;
+ padding:12px 18px;
+ border-radius:12px;
+}
+.navbar a:hover{
+ background:#6d4db4;
+ color:#fff7bf;
+ text-shadow:0 0 8px gold;
+}
+.navbar a.active{
+ background:var(--gold);
+ color:var(--purple);
+}
+.content{padding:40px;min-height:400px;}
+.footer{
+ background:var(--purple);
+ color:white;
+ text-align:center;
+ padding:28px 20px;
+ border-top:3px solid var(--gold);
+}
+.footer h3{color:var(--gold);}
+.footer a{color:var(--gold);font-weight:bold;text-decoration:none;}
+.copyright{
+ margin-top:22px;
+ padding-top:16px;
+ border-top:1px solid rgba(255,255,255,.25);
+ color:var(--gold);
+}
+.mwscas-table{
+ width:100%;
+ border-collapse:collapse;
+}
+.mwscas-table th{
+ background:var(--purple);
+ color:white;
+ padding:10px;
+}
+.mwscas-table td{
+ border:1px solid #bbb;
+ padding:8px;
+}
+.mwscas-table tr:nth-child(even){
+ background:#ffffcc;
+}
+.link-icon{
+ white-space:nowrap;
+}
+
+
+.phone{
+ white-space:nowrap;
+ min-width:110px;
+ text-align:center;
+}
+
+.icon-cell{
+ text-align:center;
+ white-space:nowrap;
+}
+
+
+
+.table-container{
+  width:100%;
+  overflow-x:auto;
+  margin:1rem 0;
+}
+
+.conference-button{
+  display:inline-block;
+  background:var(--purple);
+  color:var(--gold);
+  padding:12px 22px;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+.conference-button:hover{
+  background:#6d4db4;
+  color:#fff7bf;
+}
+.phone{
+  white-space:nowrap;
+}
+.icon-cell{
+  text-align:center;
+  white-space:nowrap;
+}
+
+
+/* Version 2: center icon columns */
+td.icon-cell{
+    text-align:center !important;
+    vertical-align:middle !important;
+    padding-left:8px;
+    padding-right:8px;
+}
+td.icon-cell a{
+    display:inline-block;
+    margin:0 auto;
+}
