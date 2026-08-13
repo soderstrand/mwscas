@@ -4,13 +4,13 @@
 Generated automatically.
 
 Generator:
-    documents.py
+    documents_modified.py
 
 Source Workbook:
     documents.xlsx
 
 Generated:
-    2026-08-10 18:09
+    2026-08-13 10:52
 
 DO NOT EDIT THIS HTML DIRECTLY.
 
@@ -69,6 +69,22 @@ and regenerate.
     margin: 0 auto;
 }
 
+.document-section {
+    max-width: 1100px;
+    margin: 30px auto 16px auto;
+    color: #333333;
+}
+
+.document-section h3 {
+    margin-bottom: 8px;
+    color: #5b3f99;
+}
+
+.document-section p {
+    margin-top: 0;
+    line-height: 1.55;
+}
+
 .document-card {
     background: #ffffff;
     border-radius: 10px;
@@ -77,6 +93,10 @@ and regenerate.
     border-top: 5px solid #5b3f99;
     display: flex;
     flex-direction: column;
+}
+
+.document-card.member-card {
+    border-top-color: #8a5a00;
 }
 
 .document-type {
@@ -90,6 +110,10 @@ and regenerate.
     font-weight: bold;
     letter-spacing: .05em;
     margin-bottom: 14px;
+}
+
+.member-card .document-type {
+    background: #8a5a00;
 }
 
 .document-card h3 {
@@ -121,15 +145,129 @@ and regenerate.
     font-weight: bold;
     padding: 10px 16px;
     border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+.member-card .document-button {
+    background: #8a5a00;
 }
 
 .document-button:hover {
     opacity: .88;
 }
 
+/* Members Only PIN / document viewer modal. */
+#member-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#member-modal .modal-box {
+    background: #ffffff;
+    width: min(1100px, 100%);
+    height: min(90vh, 850px);
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#member-modal .modal-header {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+#member-modal .modal-title {
+    font-weight: bold;
+    color: #333333;
+    overflow-wrap: anywhere;
+}
+
+#member-modal .close-button {
+    border: none;
+    background: transparent;
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: #555555;
+}
+
+#member-modal .modal-body {
+    padding: 20px;
+    overflow: auto;
+    flex: 1;
+}
+
+#member-modal .pin-panel {
+    max-width: 520px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#member-modal .pin-panel input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 10px 0 14px 0;
+    font-size: 1.05rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+#member-modal .error {
+    color: #a00000;
+    margin-top: 12px;
+    min-height: 1.3em;
+}
+
+#member-modal .viewer-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+#member-modal .viewer-frame {
+    width: 100%;
+    height: calc(100% - 60px);
+    min-height: 450px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+}
+
+#member-modal .download-button {
+    display: inline-block;
+    background: #5b3f99;
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 9px 14px;
+    border-radius: 5px;
+}
+
 @media (max-width: 700px) {
     .documents-grid {
         grid-template-columns: 1fr;
+    }
+
+    #member-modal {
+        padding: 8px;
+    }
+
+    #member-modal .modal-box {
+        height: 96vh;
     }
 }
 
@@ -138,13 +276,13 @@ and regenerate.
 <h2>MWSCAS Documents</h2>
 
 <div class="documents-intro">
-    <p>
-        Documents related to the organization and operation of the
-        IEEE International Midwest Symposium on Circuits and Systems
-        are provided below.
-    </p>
+    <p>Note:  Anyone can download public documents.  Member&#x27;s Only documents are encrypted and require a pin number to download.</p>
 </div>
 
+<div class="document-section">
+<h3>Public Documents</h3>
+<p>These documents may be viewed and downloaded by anyone.</p>
+</div>
 <div class="documents-grid">
 
 <article class="document-card">
@@ -161,7 +299,7 @@ and regenerate.
         File: bylaws.pdf
     </div>
 
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/bylaws.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/bylaws.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
 
 </article>
 
@@ -179,43 +317,7 @@ and regenerate.
         File: agenda2026.pdf
     </div>
 
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/agenda2026.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
-
-</article>
-
-<article class="document-card">
-
-    <div class="document-type">PDF</div>
-
-    <h3>Treasurer&#x27;s Report 2026</h3>
-
-    <div class="document-description">
-        The 2026 Treasurer&#x27;s Report to the MWSCAS Steering Committee
-    </div>
-
-    <div class="document-file">
-        File: treasurers_report_2026.pdf
-    </div>
-
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/treasurers_report_2026.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
-
-</article>
-
-<article class="document-card">
-
-    <div class="document-type">PDF</div>
-
-    <h3>Minutes 2025</h3>
-
-    <div class="document-description">
-        MWSCAS  Steering Committee minutes 2025
-    </div>
-
-    <div class="document-file">
-        File: minutes2025.pdf
-    </div>
-
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/minutes2025.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/agenda2026.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
 
 </article>
 
@@ -233,25 +335,7 @@ and regenerate.
         File: future_symposia.pdf
     </div>
 
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/future_symposia.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
-
-</article>
-
-<article class="document-card">
-
-    <div class="document-type">PDF</div>
-
-    <h3>Buffalo 2030</h3>
-
-    <div class="document-description">
-        Proposal to host MWSCAS 2030 in Buffalo NY
-    </div>
-
-    <div class="document-file">
-        File: proposal2030.pdf
-    </div>
-
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/proposal2030.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/future_symposia.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
 
 </article>
 
@@ -269,7 +353,7 @@ and regenerate.
         File: nomination_sahil.pdf
     </div>
 
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/nomination_sahil.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/nomination_sahil.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
 
 </article>
 
@@ -287,11 +371,273 @@ and regenerate.
         File: sahil_cv.pdf
     </div>
 
-    <a class="document-button" href="https://soderstrand.github.io/mwscas/documents/sahil_cv.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/sahil_cv.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+
+</article>
+</div>
+<div class="document-section">
+<h3>Members Only Documents</h3>
+<p>These documents require the Members Only PIN to open.</p>
+</div>
+<div class="documents-grid">
+
+<article class="document-card member-card">
+
+    <div class="document-type">PDF</div>
+
+    <h3>Treasurer&#x27;s Report 2026</h3>
+
+    <div class="document-description">
+        The 2026 Treasurer&#x27;s Report to the MWSCAS Steering Committee
+    </div>
+
+    <div class="document-file">
+        File: treasurers_report_2026.pdf (PIN required)
+    </div>
+
+    <button class="document-button" type="button" onclick="openMemberDocument(&quot;documents/treasurers_report_2026.pdf.enc&quot;,&quot;treasurers_report_2026.pdf&quot;,&quot;application/pdf&quot;,&quot;Treasurer&#x27;s Report 2026&quot;)">🔒 Open Members Only PDF</button>
 
 </article>
 
+<article class="document-card member-card">
+
+    <div class="document-type">PDF</div>
+
+    <h3>Minutes 2025</h3>
+
+    <div class="document-description">
+        MWSCAS  Steering Committee minutes 2025
+    </div>
+
+    <div class="document-file">
+        File: minutes2025.pdf (PIN required)
+    </div>
+
+    <button class="document-button" type="button" onclick="openMemberDocument(&quot;documents/minutes2025.pdf.enc&quot;,&quot;minutes2025.pdf&quot;,&quot;application/pdf&quot;,&quot;Minutes 2025&quot;)">🔒 Open Members Only PDF</button>
+
+</article>
+
+<article class="document-card member-card">
+
+    <div class="document-type">PDF</div>
+
+    <h3>Buffalo 2030</h3>
+
+    <div class="document-description">
+        Proposal to host MWSCAS 2030 in Buffalo NY
+    </div>
+
+    <div class="document-file">
+        File: proposal2030.pdf (PIN required)
+    </div>
+
+    <button class="document-button" type="button" onclick="openMemberDocument(&quot;documents/proposal2030.pdf.enc&quot;,&quot;proposal2030.pdf&quot;,&quot;application/pdf&quot;,&quot;Buffalo 2030&quot;)">🔒 Open Members Only PDF</button>
+
+</article>
 </div>
+
+<div id="member-modal" role="dialog" aria-modal="true" aria-labelledby="member-modal-title">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div id="member-modal-title" class="modal-title">Members Only Document</div>
+            <button class="close-button" type="button" aria-label="Close" onclick="closeMemberModal()">&times;</button>
+        </div>
+        <div id="member-modal-body" class="modal-body"></div>
+    </div>
+</div>
+
+<script>
+(function () {
+    "use strict";
+
+    const PBKDF2_ITERATIONS = 600000;
+    const MEMBER_KEY_BYTES = 32;
+
+    let currentBlobUrl = null;
+    let currentDownloadUrl = null;
+
+    function b64ToBytes(value) {
+        const binary = atob(value);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return bytes;
+    }
+
+    function bytesToUtf8(bytes) {
+        return new TextDecoder().decode(bytes);
+    }
+
+    function showModal(title) {
+        const modal = document.getElementById("member-modal");
+        document.getElementById("member-modal-title").textContent = title;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        const modal = document.getElementById("member-modal");
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+
+        if (currentBlobUrl) {
+            URL.revokeObjectURL(currentBlobUrl);
+            currentBlobUrl = null;
+        }
+        if (currentDownloadUrl) {
+            URL.revokeObjectURL(currentDownloadUrl);
+            currentDownloadUrl = null;
+        }
+
+        document.getElementById("member-modal-body").innerHTML = "";
+    }
+
+    async function deriveKey(pin, salt) {
+        const pinBytes = new TextEncoder().encode(pin);
+        const baseKey = await crypto.subtle.importKey(
+            "raw",
+            pinBytes,
+            "PBKDF2",
+            false,
+            ["deriveKey"]
+        );
+
+        return crypto.subtle.deriveKey(
+            {
+                name: "PBKDF2",
+                salt: salt,
+                iterations: PBKDF2_ITERATIONS,
+                hash: "SHA-256"
+            },
+            baseKey,
+            {
+                name: "AES-GCM",
+                length: MEMBER_KEY_BYTES * 8
+            },
+            false,
+            ["decrypt"]
+        );
+    }
+
+    async function decryptMemberDocument(url, originalFilename, mimeType, title) {
+        showModal(title);
+
+        const body = document.getElementById("member-modal-body");
+        body.innerHTML = `
+            <div class="pin-panel">
+                <p><strong>Members Only Document</strong></p>
+                <p>Enter the PIN provided to MWSCAS Steering Committee members.</p>
+                <input id="member-pin" type="password" inputmode="numeric" autocomplete="off"
+                       placeholder="Enter PIN" aria-label="Members Only PIN">
+                <button id="member-open-button" class="document-button" type="button">Open Document</button>
+                <div id="member-error" class="error"></div>
+            </div>`;
+
+        const pinInput = document.getElementById("member-pin");
+        const openButton = document.getElementById("member-open-button");
+        const errorBox = document.getElementById("member-error");
+
+        const tryDecrypt = async function () {
+            const pin = pinInput.value;
+            errorBox.textContent = "";
+
+            if (!pin) {
+                errorBox.textContent = "Please enter the PIN.";
+                return;
+            }
+
+            openButton.disabled = true;
+            openButton.textContent = "Decrypting...";
+
+            try {
+                const response = await fetch(url, { cache: "no-store" });
+                if (!response.ok) {
+                    throw new Error("The encrypted document could not be downloaded.");
+                }
+
+                const packageData = await response.json();
+
+                if (packageData.version !== 1 || packageData.algorithm !== "AES-256-GCM") {
+                    throw new Error("This document uses an unsupported encryption format.");
+                }
+
+                const salt = b64ToBytes(packageData.salt);
+                const iv = b64ToBytes(packageData.iv);
+                const ciphertext = b64ToBytes(packageData.ciphertext);
+
+                const key = await deriveKey(pin, salt);
+
+                let plaintext;
+                try {
+                    plaintext = await crypto.subtle.decrypt(
+                        { name: "AES-GCM", iv: iv },
+                        key,
+                        ciphertext
+                    );
+                } catch (e) {
+                    throw new Error("The PIN is incorrect, or the document is damaged.");
+                }
+
+                const blob = new Blob([plaintext], { type: mimeType || packageData.mime_type || "application/octet-stream" });
+
+                if (currentBlobUrl) URL.revokeObjectURL(currentBlobUrl);
+                if (currentDownloadUrl) URL.revokeObjectURL(currentDownloadUrl);
+
+                currentBlobUrl = URL.createObjectURL(blob);
+                currentDownloadUrl = URL.createObjectURL(blob);
+
+                if ((mimeType || packageData.mime_type) === "application/pdf") {
+                    body.innerHTML = `
+                        <div class="viewer-actions">
+                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalFilename || packageData.original_filename)}">Download PDF</a>
+                        </div>
+                        <iframe class="viewer-frame" src="${currentBlobUrl}" title="PDF viewer"></iframe>`;
+                } else {
+                    body.innerHTML = `
+                        <div class="pin-panel" style="margin-top:20px;">
+                            <p><strong>Document decrypted successfully.</strong></p>
+                            <p>Click below to download the original file.</p>
+                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalFilename || packageData.original_filename)}">Download Document</a>
+                        </div>`;
+                }
+
+            } catch (error) {
+                errorBox.textContent = error.message || "The document could not be decrypted.";
+                openButton.disabled = false;
+                openButton.textContent = "Open Document";
+                return;
+            }
+        };
+
+        openButton.addEventListener("click", tryDecrypt);
+        pinInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                tryDecrypt();
+            }
+        });
+        pinInput.focus();
+    }
+
+    function escapeAttribute(value) {
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/"/g, "&quot;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+    }
+
+    window.openMemberDocument = decryptMemberDocument;
+    window.closeMemberModal = closeModal;
+
+    window.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            const modal = document.getElementById("member-modal");
+            if (modal && modal.style.display === "block") closeModal();
+        }
+    });
+})();
+</script>
 </main>
 
 <footer class="footer">
