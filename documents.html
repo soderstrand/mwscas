@@ -4,13 +4,13 @@
 Generated automatically.
 
 Generator:
-    documents_modified.py
+    documents.py
 
 Source Workbook:
     documents.xlsx
 
 Generated:
-    2026-08-13 10:52
+    2026-08-14 14:30
 
 DO NOT EDIT THIS HTML DIRECTLY.
 
@@ -53,11 +53,21 @@ and regenerate.
 
 <style>
 
-.documents-intro {
-    max-width: 900px;
-    margin: 0 auto 28px auto;
+.documents-title {
+    max-width: 1100px;
+    margin: 0 auto 14px auto;
     text-align: center;
-    font-size: 1.05rem;
+    color: #5b3f99;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.documents-intro {
+    max-width: 1100px;
+    margin: 0 auto 28px auto;
+    text-align: left;
+    font-size: 1rem;
     line-height: 1.6;
 }
 
@@ -272,9 +282,7 @@ and regenerate.
 }
 
 </style>
-
-<h2>MWSCAS Documents</h2>
-
+<div class="documents-title">Documents</div>
 <div class="documents-intro">
     <p>Note:  Anyone can download public documents.  Member&#x27;s Only documents are encrypted and require a pin number to download.</p>
 </div>
@@ -284,24 +292,6 @@ and regenerate.
 <p>These documents may be viewed and downloaded by anyone.</p>
 </div>
 <div class="documents-grid">
-
-<article class="document-card">
-
-    <div class="document-type">PDF</div>
-
-    <h3>Bylaws</h3>
-
-    <div class="document-description">
-        MWSCAS  Steering Committee Bylaws Update
-    </div>
-
-    <div class="document-file">
-        File: bylaws.pdf
-    </div>
-
-    <a class="document-button" href="documents/bylaws.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
-
-</article>
 
 <article class="document-card">
 
@@ -341,37 +331,19 @@ and regenerate.
 
 <article class="document-card">
 
-    <div class="document-type">PDF</div>
+    <div class="document-type">DOCUMENT</div>
 
-    <h3>Sahil Shah Nomination</h3>
+    <h3>MWSCAS 2025 Awards</h3>
 
     <div class="document-description">
-        Jennifer Blain nomination of Sahil Shah for the Steering Committee
+        The final report of the MWSCAS 2025 committee
     </div>
 
     <div class="document-file">
-        File: nomination_sahil.pdf
+        File: MWSCAS2025_Awards_Slides.pptx
     </div>
 
-    <a class="document-button" href="documents/nomination_sahil.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
-
-</article>
-
-<article class="document-card">
-
-    <div class="document-type">PDF</div>
-
-    <h3>Sahil Shah CV</h3>
-
-    <div class="document-description">
-        CV of Sahil Shah to support his nomination to the Steering Committee
-    </div>
-
-    <div class="document-file">
-        File: sahil_cv.pdf
-    </div>
-
-    <a class="document-button" href="documents/sahil_cv.pdf" target="_blank" rel="noopener">📄 View / Download PDF</a>
+    <a class="document-button" href="documents/MWSCAS2025_Awards_Slides.pptx" target="_blank" rel="noopener">📎 View / Download DOCUMENT</a>
 
 </article>
 </div>
@@ -432,6 +404,24 @@ and regenerate.
     </div>
 
     <button class="document-button" type="button" onclick="openMemberDocument(&quot;documents/proposal2030.pdf.enc&quot;,&quot;proposal2030.pdf&quot;,&quot;application/pdf&quot;,&quot;Buffalo 2030&quot;)">🔒 Open Members Only PDF</button>
+
+</article>
+
+<article class="document-card member-card">
+
+    <div class="document-type">IMAGE</div>
+
+    <h3>Image Test</h3>
+
+    <div class="document-description">
+        Display jpg image
+    </div>
+
+    <div class="document-file">
+        File: mwscas_logo.jpg (PIN required)
+    </div>
+
+    <button class="document-button" type="button" onclick="openMemberDocument(&quot;documents/mwscas_logo.jpg.enc&quot;,&quot;mwscas_logo.jpg&quot;,&quot;image/jpeg&quot;,&quot;Image Test&quot;)">🔒 Open Members Only IMAGE</button>
 
 </article>
 </div>
@@ -587,18 +577,29 @@ and regenerate.
                 currentBlobUrl = URL.createObjectURL(blob);
                 currentDownloadUrl = URL.createObjectURL(blob);
 
-                if ((mimeType || packageData.mime_type) === "application/pdf") {
+                const decryptedMimeType = mimeType || packageData.mime_type || "";
+                const originalName = originalFilename || packageData.original_filename || "";
+
+                const isPdf = decryptedMimeType === "application/pdf";
+                const isImage = decryptedMimeType.startsWith("image/");
+                const isHtml = decryptedMimeType === "text/html";
+
+                if (isPdf || isImage || isHtml) {
+                    const viewerTitle = isPdf ? "PDF viewer"
+                        : isImage ? "Image viewer"
+                        : "HTML viewer";
+
                     body.innerHTML = `
                         <div class="viewer-actions">
-                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalFilename || packageData.original_filename)}">Download PDF</a>
+                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalName)}">Download File</a>
                         </div>
-                        <iframe class="viewer-frame" src="${currentBlobUrl}" title="PDF viewer"></iframe>`;
+                        <iframe class="viewer-frame" src="${currentBlobUrl}" title="${viewerTitle}"></iframe>`;
                 } else {
                     body.innerHTML = `
                         <div class="pin-panel" style="margin-top:20px;">
                             <p><strong>Document decrypted successfully.</strong></p>
-                            <p>Click below to download the original file.</p>
-                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalFilename || packageData.original_filename)}">Download Document</a>
+                            <p>This file type is provided as a download.</p>
+                            <a class="download-button" href="${currentDownloadUrl}" download="${escapeAttribute(originalName)}">Download File</a>
                         </div>`;
                 }
 
